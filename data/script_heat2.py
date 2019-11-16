@@ -19,11 +19,16 @@ plt.rc('text.latex',unicode=True)
 plt.rc('text.latex', preamble=r'\usepackage[russian]{babel}')
 import numpy as np
 
+volt01 = np.array([0,0.2,0.26,0.3,0.34,0.36,0.38,0.4,0.44])
+# Aps
+curr01 = np.array([0,1,8,14,28,38,54,74,100]) / 1000
+
+
 # Volts
-volt1 = np.array([0,0.2,0.26,0.3,0.34,0.36,0.38,0.4,0.44])
+volt1 = np.array([0,0.1,0.2,0.3,0.36,0.38,0.4,0.42])
 
 # Aps
-curr1 = np.array([0,1,8,14,28,38,54,74,100]) / 1000
+curr1 = np.array([0,0,4,20,38,64,76,100]) / 1000
 
 curr_t = np.linspace(0,100/1000,200)
 
@@ -35,13 +40,14 @@ print('Approximation Done:\nJs = {} Amps\nRb = {} Ohm\nn = {}'.format(popt[0],po
 print(perr)
 
 plt.figure(figsize = (10,7))
-plt.plot(voltsTheory,curr_t*1000,'k-',label = 'Approximation')
-plt.plot(volt1,curr1*1000,'ro',label = 'Experiment')
+plt.plot(voltsTheory,curr_t*1000,'k-',label = 'Approximation, T = 340K')
+plt.plot(volt1,curr1*1000,'ro',label = 'Experiment, T = 340K')
+plt.plot(volt01,curr01*1000,'bs',label = 'Experiment, T = 298K')
 plt.legend()
 plt.grid(which = 'both')
 plt.xlabel(r'$U, V$')
 plt.ylabel(r'$J, mA$')
-plt.savefig('imgs/vah1str.png',dpi=500)
+# plt.savefig('imgs/vah12str.png',dpi=500)
 
 plt.show()
 
