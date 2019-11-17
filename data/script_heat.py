@@ -46,8 +46,8 @@ curr = np.array([0,0,4,20,38,64,76,100,-0.02,-0.082,-0.086,-0.088,-0.090,-0.090,
 curr1 = np.array([0,0,4,20,38,64,76,100]) / 1000
 curr2 = np.array([-0.02,-0.082,-0.086,-0.088,-0.090,-0.090,-0.092,-0.092,-0.093,-0.094,-0.094]) / 1000
 
-curr_t = np.linspace(0,100/1000,200)
-# curr_t = np.logspace(-10,-1,300)
+# curr_t = np.linspace(0,100/1000,200)
+curr_t = np.logspace(-10,-1,300)
 
 
 popt, pcov = curve_fit(UfromJ,curr1,volt1,p0 = [10**(-4),2,2]) 
@@ -69,11 +69,11 @@ print(perr)
 plt.figure(figsize = (10,7))
 plt.plot(voltsTheory*100,curr_t*1000,'k-',label = 'Approximation, T = 340K')
 plt.plot(volt1*100,curr1*1000,'ro',label = 'Experiment, T = 340K')
-plt.plot(volt2,curr2*1000,'ro')
-# plt.plot(volt2,abs(curr2*1000),'ro')
+# plt.plot(volt2,curr2*1000,'ro')
+plt.plot(volt2,abs(curr2*1000),'ro')
 
-# plt.plot(volt01*100,curr01*1000,'bs',label = 'Experiment, T = 298K')
-# plt.plot(volt02,abs(curr02*1000),'bs')
+plt.plot(volt01*100,curr01*1000,'bs',label = 'Experiment, T = 298K')
+plt.plot(volt02,abs(curr02*1000),'bs')
 
 
 # ticks = np.append( np.arange(-100,0,step = 20),np.arange(0,1,step = 0.2))
@@ -82,10 +82,10 @@ labels = ('-100','-80','-60','-40','-20','0','0.2','0.4')
 plt.xticks(ticks,labels)
 plt.legend()
 plt.grid(which = 'both')
-# plt.yscale('log')
-# plt.ylim((10**(-3),2*10**(2)))
+plt.yscale('log')
+plt.ylim((10**(-3),2*10**(2)))
 plt.xlabel(r'$U, V$')
-plt.ylabel(r'$J, mA$')
+plt.ylabel(r'$|J|, mA$')
 # plt.savefig('imgs/vah12log.png',dpi=500)
 
 plt.show()

@@ -71,7 +71,7 @@ plt.grid(which = 'both')
 plt.yscale('log')
 plt.ylim((10**(-3),2*10**(2)))
 plt.xlabel(r'$U, V$')
-plt.ylabel(r'$J, mA$')
+plt.ylabel(r'$|J|, mA$')
 # plt.savefig('imgs/vah1log.png',dpi=500)
 
 # plt.figure(figsize = (7,7))
